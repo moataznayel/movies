@@ -12,7 +12,6 @@ const Naav = () => {
   const navigate = useNavigate();
   const handleSearch = (e) => {
     e.key === "Enter" && navigate("/search", { state: e.target.value });
-    // console.log(e.target.value);
   };
   return (
     <div className="Wrap-navbar">
@@ -25,11 +24,15 @@ const Naav = () => {
               <Nav.Link as={Link} to={"/"}>
                 Movies
               </Nav.Link>
-              <Nav.Link>TVShows</Nav.Link>
-              <Nav.Link>Favorite</Nav.Link>
+              <Nav.Link as={Link} to={"/tv"}>
+                TVShows
+              </Nav.Link>
+              <Nav.Link as={Link} to={"/favorite"}>
+                Favorite
+              </Nav.Link>
             </Nav>
             <Nav className="ms-auto">
-              <Nav.Link href="#home">Login</Nav.Link>
+              <Nav.Link>Login</Nav.Link>
               {search ? (
                 <IoClose
                   className="text-light"

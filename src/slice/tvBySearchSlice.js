@@ -1,22 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getMoviesBySearch } from "../getData/getMoviesBySearch";
+import { getTvBySearch } from "../getData/getTvBySearch";
 
 const initialState = {
-  movies: [],
+  tv: [],
   isload: true,
 };
 const moviesBySearchSlice = createSlice({
-  name: "moviesSearch",
+  name: "tvSearch",
   initialState,
   extraReducers: {
-    [getMoviesBySearch.pending]: (state, action) => {
+    [getTvBySearch.pending]: (state, action) => {
       state.isload = true;
     },
-    [getMoviesBySearch.fulfilled]: (state, action) => {
-      state.movies = action.payload;
+    [getTvBySearch.fulfilled]: (state, action) => {
+      state.tv = action.payload;
       state.isload = false;
     },
-    [getMoviesBySearch.rejected]: (state, action) => {
+    [getTvBySearch.rejected]: (state, action) => {
       state.isload = true;
     },
   },
